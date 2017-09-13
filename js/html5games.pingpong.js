@@ -55,6 +55,8 @@ function moveBall(){
     //check right edge
     if(ball.x + ball.speed * ball.directionX > playgroundWidth - 10){
         // player B lost.
+        pingpong.scoreA++;
+        $("#scoreA").html(pingpong.scoreA);
         // rest the ball;
         ball.x = 250;
         ball.y = 100;
@@ -68,6 +70,8 @@ function moveBall(){
     //check left edge
     if(ball.x + ball.speed * ball.directionX < -10){
         // player A lost
+        pingpong.scoreB++;
+        $("#scoreB").html(pingpong.scoreB);
         // reset the ball;
         ball.x = 150;
         ball.y = 100;
@@ -114,7 +118,6 @@ function getPaddlePosition(paddleName){
 }
 
 function collision(paddle, ball){
-    console.log("col",paddle, ball);
     var nextPosX = ball.x + (ball.speed * ball.directionX) + 10;
     var nextPosY = ball.y + (ball.speed * ball.directionY) + 10;
     if (nextPosX >= paddle.xLeft && 
